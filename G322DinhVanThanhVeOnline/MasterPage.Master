@@ -1,0 +1,129 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="G322DinhVanThanhVeOnline.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style3 {
+            width: 1125px;
+            height: 375px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <img alt="Banner" class="auto-style3" longdesc="Banner" src="Media/Banner.jpg" /></div>
+        <table class="auto-style1">
+            <tr>
+                <td>
+                    <asp:Menu ID="MenuMain" runat="server" BackColor="White" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Medium" ForeColor="#FF5050" Orientation="Horizontal" StaticSubMenuIndent="10px" Font-Bold="True" Font-Italic="False" OnMenuItemClick="MenuMain_MenuItemClick">
+                        <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <DynamicMenuStyle BackColor="#F7F6F3" />
+                        <DynamicSelectedStyle BackColor="#5D7B9D" />
+                        <Items>
+                            <asp:MenuItem Text="Trang chủ" Value="tc" NavigateUrl="~/HomePage.aspx">
+                                <asp:MenuItem Text="Giới thiệu" Value="gt"></asp:MenuItem>
+                                <asp:MenuItem Text="Liên hệ" Value="lh"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Vé đặt mua" Value="gh" NavigateUrl="~/Cart.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Quản lý" Value="ql"></asp:MenuItem>
+                            <asp:MenuItem Text="Sơ đồ Website" Value="sd"></asp:MenuItem>
+                            <asp:MenuItem Text="Đăng nhập" Value="dn"></asp:MenuItem>
+                        </Items>
+                        <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <StaticSelectedStyle BackColor="#5D7B9D" />
+                        <StaticItemTemplate>
+                            <%# Eval("Text") %>
+                        </StaticItemTemplate>
+                    </asp:Menu>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Login ID="LoginNv" runat="server" BackColor="#FFFBD6" BorderColor="#FFDFAD" BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" FailureText="Quý khách đã đăng nhập không thành công. Vui lòng đăng nhập lại" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" LoginButtonText="Đăng nhập" OnAuthenticate="LoginNv_Authenticate" PasswordLabelText="Mật khẩu" PasswordRequiredErrorMessage="Không được để trống mật khẩu" RememberMeText="Ghi nhớ cho lần đăng nhập sau" TextLayout="TextOnTop" UserNameLabelText="Tên đăng nhập:" UserNameRequiredErrorMessage="Không được để trống tên đăng nhập" Visible="False" DestinationPageUrl="~/Managements.aspx">
+                        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+                        <LayoutTemplate>
+                            <table cellpadding="4" cellspacing="0" style="border-collapse:collapse;">
+                                <tr>
+                                    <td>
+                                        <table cellpadding="0">
+                                            <tr>
+                                                <td align="center" style="color:White;background-color:#990000;font-size:0.9em;font-weight:bold;">Log In</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Tên đăng nhập:</asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:TextBox ID="UserName" runat="server" Font-Size="0.8em"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Không được để trống tên đăng nhập" ToolTip="Không được để trống tên đăng nhập" ValidationGroup="ctl00$LoginNv">*</asp:RequiredFieldValidator>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Mật khẩu</asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:TextBox ID="Password" runat="server" Font-Size="0.8em" TextMode="Password"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Không được để trống mật khẩu" ToolTip="Không được để trống mật khẩu" ValidationGroup="ctl00$LoginNv">*</asp:RequiredFieldValidator>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:CheckBox ID="RememberMe" runat="server" Text="Ghi nhớ cho lần đăng nhập sau" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" style="color:Red;">
+                                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <asp:Label ID="Label1" runat="server" Text="UFM.19DTH.G3.22.DVT"></asp:Label>
+                                                    <asp:Button ID="LoginButton" runat="server" BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" Text="Đăng nhập" ValidationGroup="ctl00$LoginNv" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </LayoutTemplate>
+                        <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" />
+                        <TextBoxStyle Font-Size="0.8em" />
+                        <TitleTextStyle BackColor="#990000" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
+                    </asp:Login>
+                </td>
+            </tr>
+            <tr>
+                <td>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <table class="auto-style1">
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
